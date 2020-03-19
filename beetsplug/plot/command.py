@@ -65,17 +65,40 @@ class PlotCommand(Subcommand):
 
     def plotit(self, items, field):
         sample = []
+
         for item in items:
             if item.get(field):
-                sample.append(float(item.get(field)))
+                sample.append(item.get(field))
 
-        sample = np.array(sample)
+        from collections import Counter
+        counter = Counter(sample)
 
-        counts, bin_edges = np.histogram(sample, bins=10)
+        lst = []
+        for item in counter.items():
+            lst.append(list(item))
+
+        print(lst)
+
+        arr = np.array(lst)
+        print(arr)
+
+        # frequencies = list(counter.values())
+        # names = list(counter.keys())
+        # print(names)
+        # print(frequencies)
+
+        # arr.sort(axis=0)
+        # print(arr)
+
+        return
+        # sample = np.array(sample)
+        # print(sample)
+        # counts, bin_edges = np.histogram(sample, bins=10)
 
         self._say("Displaying: {}".format(field), log_only=False)
         fig = tpl.figure()
-        fig.hist(counts, bin_edges, orientation="horizontal", force_ascii=False, strip=True)
+        fig.barh(frequencies, names, force_ascii=False)
+        # fig.hist(counts, bin_edges, orientation="horizontal", force_ascii=False)
         fig.show()
 
     def _retrieve_library_items(self):
