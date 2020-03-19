@@ -5,14 +5,10 @@
 #  License: See LICENSE.txt
 #
 
-import operator
-import os
-import random
-import string
-from glob import glob
+
 from optparse import OptionParser
-from pathlib import Path
-from shutil import copyfile
+import numpy as np
+import termplotlib as tpl
 
 from beets import library
 from beets.dbcore.db import Results
@@ -60,7 +56,34 @@ class PlotCommand(Subcommand):
             self.show_version_information()
             return
 
-        self._say("Let's get down do business!!")
+        self.handle_display()
+
+    def handle_display(self):
+        field_to_examine = self.query.pop(0)
+        items = self._retrieve_library_items()
+        self.plotit(items, field_to_examine)
+
+    def plotit(self, items, field):
+        sample = []
+        for item in items:
+            if item.get(field):
+                sample.append(float(item.get(field)))
+
+        sample = np.array(sample)
+
+        counts, bin_edges = np.histogram(sample, bins=10)
+
+        self._say("Displaying: {}".format(field), log_only=False)
+        fig = tpl.figure()
+        fig.hist(counts, bin_edges, orientation="horizontal", force_ascii=False, strip=True)
+        fig.show()
+
+    def _retrieve_library_items(self):
+        full_query = self.query
+        parsed_query = parse_query_string(" ".join(full_query), Item)[0]
+        self._say("Song selection query: {}".format(parsed_query), log_only=True)
+
+        return self.lib.items(parsed_query)
 
     def show_version_information(self):
         from beetsplug.plot.version import __version__
