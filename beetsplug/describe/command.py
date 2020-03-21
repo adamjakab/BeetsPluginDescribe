@@ -74,7 +74,7 @@ class DescribeCommand(Subcommand):
         data_desc = self._describe(data, field_to_examine)
 
         self.print_describe_table(data_desc)
-        # self.plot_field_data(data_desc)
+        self.plot_field_data(data_desc)
 
     def print_describe_table(self, desc):
         table_data = []
@@ -93,10 +93,13 @@ class DescribeCommand(Subcommand):
     def plot_field_data(self, desc):
         field_name = desc["field_name"]["value"]
         field_type = desc["field_type"]["value"]
+        field_type_auto = desc["field_type_auto"]["value"]
         df = desc["df"]
         vec = df[field_name]
 
-        if field_type in self._get_dbcore_numeric_types():
+        if common.is_numeric(field_type, field_type_auto):
+            vec = pd.to_numeric(vec, errors='coerce').fillna(0)
+
             # todo: put option/config for bins
             num_bins = 10
 
@@ -130,8 +133,8 @@ class DescribeCommand(Subcommand):
         desc = {}
 
         df = pd.DataFrame(data)
-        field_vector = df[field]
-        vc: pd.Series = field_vector.value_counts(sort=True, dropna=False)
+        vec = df[field]
+        vc: pd.Series = vec.value_counts(sort=True, dropna=False)
 
         # Field name
         desc["field_name"] = {'label': 'Field name', 'value': field}
@@ -140,31 +143,38 @@ class DescribeCommand(Subcommand):
         desc["df"] = df
 
         # Field type
-        field_type = self._get_field_type(field)
+        field_type = common.get_field_type(field)
         desc["field_type"] = {'label': 'Field type', 'value': field_type}
 
+        field_type_auto = None
+        if not field_type:
+            field_type_auto = common.get_automatic_type_for_field(field)
+            desc["field_type_auto"] = {'label': 'Auto type', 'value': field_type_auto}
+
         # Total count
-        total_count = df[field].count()
+        total_count = vec.count()
         desc["total_count"] = {'label': 'Count', 'value': total_count}
 
-        if field_type in self._get_dbcore_numeric_types():
+        if common.is_numeric(field_type, field_type_auto):
+            vec = pd.to_numeric(vec, errors='coerce').dropna()
+
             # Min
-            min = field_vector.min()
+            min = vec.min()
             desc["min"] = {'label': 'Min', 'value': min}
 
             # Max
-            max = field_vector.max()
+            max = vec.max()
             desc["max"] = {'label': 'Max', 'value': max}
 
             # Mean
-            mean = field_vector.mean()
+            mean = vec.mean()
             desc["mean"] = {'label': 'Mean', 'value': mean}
 
             # Median
-            median = field_vector.median()
+            median = vec.median()
             desc["median"] = {'label': 'Median', 'value': median}
 
-            # Null Count
+            # Null Count (na is dropped on vec)
             null_count = (df[field].isna()).sum()
             desc["null_count"] = {'label': 'Empty', 'value': null_count}
         else:
@@ -190,44 +200,11 @@ class DescribeCommand(Subcommand):
 
         return desc
 
-    def _get_dbcore_numeric_types(self):
-        type_classes = []
-
-        dbcore_types = [
-            types.Integer,
-            types.Float,
-            types.NullFloat,
-            types.PaddedInt,
-            types.NullPaddedInt,
-            types.ScaledInt,
-            library.DurationType
-        ]
-
-        for dt in dbcore_types:
-            type_classes.append("{}.{}".format(dt.__module__, dt.__name__))
-
-        return type_classes
-
-    def _get_field_type(self, field):
-        fld_type = None
-
-        # Field types declared by Item
-        if field in Item._fields:
-            ft = Item._fields[field]
-            fld_type = "{}.{}".format(ft.__module__, ft.__class__.__name__)
-
-        # Field types declared/overridden by Plugins
-        if not fld_type:
-            if field in Item._types:
-                ft = Item._types[field]
-                fld_type = "{}.{}".format(ft.__module__, ft.__class__.__name__)
-
-        return fld_type
-
     def _extract_data_from_items(self, items, fields):
         data = []
 
         for item in items:
+            item: Item
             item_data = {}
 
             for field in fields:
