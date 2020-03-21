@@ -74,7 +74,7 @@ class DescribeCommand(Subcommand):
         data_desc = self._describe(data, field_to_examine)
 
         self.print_describe_table(data_desc)
-        self.plot_field_data(data_desc)
+        # self.plot_field_data(data_desc)
 
     def print_describe_table(self, desc):
         table_data = []
@@ -211,9 +211,16 @@ class DescribeCommand(Subcommand):
     def _get_field_type(self, field):
         fld_type = None
 
+        # Field types declared by Item
         if field in Item._fields:
             ft = Item._fields[field]
             fld_type = "{}.{}".format(ft.__module__, ft.__class__.__name__)
+
+        # Field types declared/overridden by Plugins
+        if not fld_type:
+            if field in Item._types:
+                ft = Item._types[field]
+                fld_type = "{}.{}".format(ft.__module__, ft.__class__.__name__)
 
         return fld_type
 
