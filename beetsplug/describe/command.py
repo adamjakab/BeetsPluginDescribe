@@ -145,10 +145,11 @@ class DescribeCommand(Subcommand):
         field_type = common.get_field_type(field)
         desc["field_type"] = {'label': 'Field type', 'value': field_type}
 
+        # Field type Auto
         field_type_auto = None
         if not field_type:
             field_type_auto = common.get_automatic_type_for_field(field)
-            desc["field_type_auto"] = {'label': 'Auto type', 'value': field_type_auto}
+        desc["field_type_auto"] = {'label': 'Auto type', 'value': field_type_auto}
 
         # Total count
         total_count = vec.count()
