@@ -134,7 +134,6 @@ class DescribeCommand(Subcommand):
 
         df = pd.DataFrame(data)
         vec = df[field]
-        vc: pd.Series = vec.value_counts(sort=True, dropna=False)
 
         # Field name
         desc["field_name"] = {'label': 'Field name', 'value': field}
@@ -175,9 +174,11 @@ class DescribeCommand(Subcommand):
             desc["median"] = {'label': 'Median', 'value': median}
 
             # Null Count (na is dropped on vec)
-            null_count = (df[field].isna()).sum()
+            null_count = total_count - vec.count()
             desc["null_count"] = {'label': 'Empty', 'value': null_count}
         else:
+            vc: pd.Series = vec.value_counts(sort=True, dropna=False)
+
             # Unique count
             unique_count = vc.count()
             desc["unique_count"] = {'label': 'Unique', 'value': unique_count}
