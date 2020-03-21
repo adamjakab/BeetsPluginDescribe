@@ -1,14 +1,13 @@
 #  Copyright: Copyright (c) 2020., Adam Jakab
 #
 #  Author: Adam Jakab <adam at jakab dot pro>
-#  Created: 2/19/20, 12:29 PM
+#  Created: 3/21/20, 11:28 AM
 #  License: See LICENSE.txt
-#
 
 import logging
 import sys
 
-__logger__ = logging.getLogger('beets.goingrunning')
+__logger__ = logging.getLogger('beets.describe')
 
 
 def say(msg, log_only=False):
