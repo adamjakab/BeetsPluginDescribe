@@ -4,6 +4,29 @@ The describe plugin will attempt to give you the full picture on a single attrib
 
 **NOTE: Under heavy development!**
 
+# Installation:
+
+```bash
+pip install numpy pandas termtables termplotlib
+```
+
+then clone the repository:
+
+```bash
+git clone https://github.com/adamjakab/BeetsPluginDescribe.git
+```
+
+add the path of the repo to your beets config
+```yaml
+pluginpath:
+    - path/to/the/repo
+```
+
+and activate the plugin the usual way
+```yaml
+plugins:
+    - describe
+```
 
 # Usage:
 
