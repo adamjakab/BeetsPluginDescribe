@@ -1,25 +1,21 @@
-# Describe (beets plugin)
+[![Build Status](https://travis-ci.org/adamjakab/BeetsPluginDescribe.svg?branch=master)](https://travis-ci.org/adamjakab/BeetsPluginDescribe)
+[![Coverage Status](https://coveralls.io/repos/github/adamjakab/BeetsPluginDescribe/badge.svg?branch=master)](https://coveralls.io/github/adamjakab/BeetsPluginDescribe?branch=master)
+[![PyPi](https://img.shields.io/pypi/v/beets-describe.svg)](https://pypi.org/project/beets-describe/)
+[![PyPI pyversions](https://img.shields.io/pypi/pyversions/beets-describe.svg)](https://pypi.org/project/beets-describe/)
+[![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE.txt)
 
-The describe plugin will attempt to give you the full picture on a single attribute of your library.
 
-**NOTE: Under heavy development!**
+# Describe (Beets Plugin)
 
-# Installation:
+The *beets-describe* plugin attempts to give you the full picture on a single attribute of your library item.
 
-```bash
-pip install numpy pandas termtables termplotlib
-```
+**NOTE: Under heavy development but works!**
 
-then clone the repository:
 
-```bash
-git clone https://github.com/adamjakab/BeetsPluginDescribe.git
-```
+## Installation:
 
-add the path of the repo to your beets config
-```yaml
-pluginpath:
-    - path/to/the/repo
+```shell script
+$ pip install beets-describe
 ```
 
 and activate the plugin the usual way
@@ -28,10 +24,10 @@ plugins:
     - describe
 ```
 
-# Usage:
+## Usage:
 
 ```bash
-beet describe genre
+beet describe field_name
 ```
 
 You can of course add any queries after the name of the field to describe such as:
@@ -40,9 +36,9 @@ You can of course add any queries after the name of the field to describe such a
 beet describe genre albumartist:'Various Artists'
 ```
 
-# Sample Output
+## Sample Output
 
-`beet describe bpm albumartist:'Various Artists'`
+`beet describe bpm`
 
 ```text
 ┌────────────────┬────────────────────────────┐
@@ -83,7 +79,8 @@ Distribution(bins=10) histogram
 173.1 - 185.0  [ 24]  ███▊
 ```
 
-`beet describe genre albumartist:'Various Artists'`
+
+`beet describe genre`
 
 ```text
 ┌────────────────┬───────────────────────────┐
@@ -170,30 +167,29 @@ Ragga                   [  1]  ▎
 Indie                   [  1]  ▎
 Speed Metal             [  1]  ▎
 Gypsy Jazz              [  1]  ▎
-Gothic Metal            [  1]  ▎
-Country                 [  1]  ▎
-Viking Metal            [  1]  ▎
-Melodic Metalcore       [  1]  ▎
-Southern Soul           [  1]  ▎
-Sludge Metal            [  1]  ▎
-Country Rock            [  1]  ▎
-Pop Soul                [  1]  ▎
-Industrial Rock         [  1]  ▎
-Grunge                  [  1]  ▎
-Southern Rock           [  1]  ▎
-Ballad                  [  1]  ▎
-Teen Pop                [  1]  ▎
-Dance-Pop               [  1]  ▎
-Lo-Fi                   [  1]  ▎
-Power Metal             [  1]  ▎
-Vocal Trance            [  1]  ▎
-Folk Rock               [  1]  ▎
-Downtempo               [  1]  ▎
-Doo Wop                 [  1]  ▎
-Blackgaze               [  1]  ▎
-Pinoy Rock              [  1]  ▎
-Classical               [  1]  ▎
-Grindcore               [  1]  ▎
-Post-Punk               [  1]  ▎
 ```
 
+
+## Configuration
+There are no configuration options for this plugin.
+
+
+## Issues
+- If something is not working as expected please use the Issue tracker.
+- If the documentation is not clear please use the Issue tracker.
+- If you have a feature request please use the Issue tracker.
+- In any other situation please use the Issue tracker.
+
+
+## Other plugins by the same author
+- [beets-goingrunning](https://github.com/adamjakab/BeetsPluginGoingRunning)
+- [beets-xtractor](https://github.com/adamjakab/BeetsPluginXtractor)
+- [beets-yearfixer](https://github.com/adamjakab/BeetsPluginYearFixer)
+- [beets-autofix](https://github.com/adamjakab/BeetsPluginAutofix)
+- [beets-describe](https://github.com/adamjakab/BeetsPluginDescribe)
+- [beets-bpmanalyser](https://github.com/adamjakab/BeetsPluginBpmAnalyser)
+- [beets-template](https://github.com/adamjakab/BeetsPluginTemplate)
+
+
+## Final Remarks
+Enjoy!
