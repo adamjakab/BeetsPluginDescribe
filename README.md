@@ -175,10 +175,10 @@ There are no configuration options for this plugin.
 
 
 ## Issues
-If something is not working as expected please use the Issue tracker.
-If the documentation is not clear please use the Issue tracker.
-If you have a feature request please use the Issue tracker.
-In any other situation please use the Issue tracker.
+- If something is not working as expected please use the Issue tracker.
+- If the documentation is not clear please use the Issue tracker.
+- If you have a feature request please use the Issue tracker.
+- In any other situation please use the Issue tracker.
 
 
 ## Other plugins by the same author
