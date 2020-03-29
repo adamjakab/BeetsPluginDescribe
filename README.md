@@ -1,6 +1,7 @@
 [![Build Status](https://travis-ci.org/adamjakab/BeetsPluginDescribe.svg?branch=devel)](https://travis-ci.org/adamjakab/BeetsPluginDescribe)
 [![Coverage Status](https://coveralls.io/repos/github/adamjakab/BeetsPluginDescribe/badge.svg?branch=devel)](https://coveralls.io/github/adamjakab/BeetsPluginDescribe?branch=devel)
 [![PyPi](https://img.shields.io/pypi/v/beets-describe.svg)](https://pypi.org/project/beets-describe/)
+[![PyPI pyversions](https://img.shields.io/pypi/pyversions/beets-describe.svg)](https://pypi.org/project/beets-describe/)
 [![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE.txt)
 
 
