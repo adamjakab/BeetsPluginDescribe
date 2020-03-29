@@ -44,7 +44,8 @@ class CompletionTest(TestHelper, Assertions):
 
     def test_run_plugin(self):
         output = self.runcli(PLUGIN_NAME)
-        self.assertIn("Usage: beet describe [options] [QUERY...]", output)
+        self.assertIn("Usage: beet describe field_name [options] [QUERY...]",
+                      output)
 
     def test_plugin_version(self):
         with capture_log(plg_log_ns) as logs:

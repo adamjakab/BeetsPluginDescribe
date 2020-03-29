@@ -29,7 +29,7 @@ class DescribeCommand(Subcommand):
         self.config = cfg
 
         self.parser = OptionParser(
-            usage='beet {plg} [options] [QUERY...]'.format(
+            usage='beet {plg} field_name [options] [QUERY...]'.format(
                 plg=common.plg_ns['__PLUGIN_NAME__']
             ))
 
