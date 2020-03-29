@@ -53,7 +53,7 @@ class DescribeCommand(Subcommand):
         self.query = decargs(arguments)
 
         # You must either pass a training name or request listing
-        if len(self.query) < 1:
+        if len(self.query) < 1 and not options.version:
             self.parser.print_help()
             return
 
