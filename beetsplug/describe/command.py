@@ -18,10 +18,6 @@ from beets.util.confit import Subview
 
 from beetsplug.describe import common
 
-# The plugin
-__PLUGIN_NAME__ = u'describe'
-__PLUGIN_SHORT_DESCRIPTION__ = u'describe a library item field'
-
 
 class DescribeCommand(Subcommand):
     config: Subview = None
@@ -32,7 +28,10 @@ class DescribeCommand(Subcommand):
     def __init__(self, cfg):
         self.config = cfg
 
-        self.parser = OptionParser(usage='beet describe field [options] [QUERY...]')
+        self.parser = OptionParser(
+            usage='beet {plg} [options] [QUERY...]'.format(
+                plg=common.plg_ns['__PLUGIN_NAME__']
+            ))
 
         self.parser.add_option(
             '-v', '--version',
@@ -43,8 +42,10 @@ class DescribeCommand(Subcommand):
         # Keep this at the end
         super(DescribeCommand, self).__init__(
             parser=self.parser,
-            name=__PLUGIN_NAME__,
-            help=__PLUGIN_SHORT_DESCRIPTION__
+            name=common.plg_ns['__PLUGIN_NAME__'],
+            aliases=[common.plg_ns['__PLUGIN_ALIAS__']] if
+            common.plg_ns['__PLUGIN_ALIAS__'] else [],
+            help=common.plg_ns['__PLUGIN_SHORT_DESCRIPTION__']
         )
 
     def func(self, lib: Library, options, arguments):
@@ -227,8 +228,11 @@ class DescribeCommand(Subcommand):
         return self.lib.items(parsed_query)
 
     def show_version_information(self):
-        from beetsplug.describe.version import __version__
-        self._say("Plot(beets-{}) plugin for Beets: v{}".format(__PLUGIN_NAME__, __version__))
+        self._say("{pt}({pn}) plugin for Beets: v{ver}".format(
+            pt=common.plg_ns['__PACKAGE_TITLE__'],
+            pn=common.plg_ns['__PACKAGE_NAME__'],
+            ver=common.plg_ns['__version__']
+        ), log_only=False)
 
     def _say(self, msg, log_only=False):
         common.say(msg, log_only)

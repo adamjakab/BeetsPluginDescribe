@@ -14,19 +14,19 @@ HERE = pathlib.Path(__file__).parent
 # The text of the README file
 README = (HERE / "README.md").read_text()
 
-main_ns = {}
-ver_path = convert_path('beetsplug/describe/version.py')
-with open(ver_path) as ver_file:
-    exec(ver_file.read(), main_ns)
+plg_ns = {}
+about_path = convert_path('beetsplug/describe/about.py')
+with open(about_path) as about_file:
+    exec(about_file.read(), plg_ns)
 
 # Setup
 setup(
-    name='beets-describe',
-    version=main_ns['__version__'],
-    description='A beets plugin that describes attributes in depth',
-    author='Adam Jakab',
-    author_email='adam@jakab.pro',
-    url='https://github.com/adamjakab/BeetsPluginDescribe',
+    name=plg_ns['__PACKAGE_NAME__'],
+    version=plg_ns['__version__'],
+    description=plg_ns['__PACKAGE_DESCRIPTION__'],
+    author=plg_ns['__author__'],
+    author_email=plg_ns['__email__'],
+    url=plg_ns['__PACKAGE_URL__'],
     license='MIT',
     long_description=README,
     long_description_content_type='text/markdown',
@@ -61,6 +61,8 @@ setup(
         'License :: OSI Approved :: MIT License',
         'Environment :: Console',
         'Programming Language :: Python :: 3',
+        'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',
+        'Programming Language :: Python :: 3.8',
     ],
 )
