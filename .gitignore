@@ -1,5 +1,7 @@
-## JetBrains
+## IDE (JetBrains/Eclipse)
 .idea/
+.project
+.pydevproject
 
 ## OS specific
 .DS_Store
