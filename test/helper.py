@@ -24,7 +24,7 @@ from beets.util import (
     bytestring_path,
     displayable_path,
 )
-from beets.util.confit import Subview, Dumper
+from confuse import Subview, Dumper
 from six import StringIO
 
 from beetsplug import describe

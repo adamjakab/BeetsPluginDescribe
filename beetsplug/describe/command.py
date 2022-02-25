@@ -14,7 +14,7 @@ from beets import library
 from beets.dbcore import types
 from beets.library import Library, Item, parse_query_parts
 from beets.ui import Subcommand, decargs
-from beets.util.confit import Subview
+from confuse import Subview
 
 from beetsplug.describe import common
 
