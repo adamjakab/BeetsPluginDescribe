@@ -1,5 +1,5 @@
-[![Build Status](https://travis-ci.org/adamjakab/BeetsPluginDescribe.svg?branch=devel)](https://travis-ci.org/adamjakab/BeetsPluginDescribe)
-[![Coverage Status](https://coveralls.io/repos/github/adamjakab/BeetsPluginDescribe/badge.svg?branch=devel)](https://coveralls.io/github/adamjakab/BeetsPluginDescribe?branch=devel)
+[![Build Status](https://travis-ci.org/adamjakab/BeetsPluginDescribe.svg?branch=master)](https://travis-ci.org/adamjakab/BeetsPluginDescribe)
+[![Coverage Status](https://coveralls.io/repos/github/adamjakab/BeetsPluginDescribe/badge.svg?branch=master)](https://coveralls.io/github/adamjakab/BeetsPluginDescribe?branch=master)
 [![PyPi](https://img.shields.io/pypi/v/beets-describe.svg)](https://pypi.org/project/beets-describe/)
 [![PyPI pyversions](https://img.shields.io/pypi/pyversions/beets-describe.svg)](https://pypi.org/project/beets-describe/)
 [![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE.txt)
@@ -147,7 +147,6 @@ World Music             [  3]  ▋
 Death Metal             [  3]  ▋
 Britpop                 [  2]  ▍
 Industrial Metal        [  2]  ▍
-PMEDIA                  [  2]  ▍
 Contemporary Classical  [  2]  ▍
 Post-Grunge             [  2]  ▍
 Psychedelic             [  2]  ▍
