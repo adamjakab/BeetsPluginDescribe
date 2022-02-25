@@ -1,4 +1,3 @@
-[![Build Status](https://travis-ci.org/adamjakab/BeetsPluginDescribe.svg?branch=master)](https://travis-ci.org/adamjakab/BeetsPluginDescribe)
 [![Coverage Status](https://coveralls.io/repos/github/adamjakab/BeetsPluginDescribe/badge.svg?branch=master)](https://coveralls.io/github/adamjakab/BeetsPluginDescribe?branch=master)
 [![PyPi](https://img.shields.io/pypi/v/beets-describe.svg)](https://pypi.org/project/beets-describe/)
 [![PyPI pyversions](https://img.shields.io/pypi/pyversions/beets-describe.svg)](https://pypi.org/project/beets-describe/)
