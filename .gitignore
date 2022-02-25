@@ -2,6 +2,7 @@
 .idea/
 .project
 .pydevproject
+.settings
 
 ## OS specific
 .DS_Store
