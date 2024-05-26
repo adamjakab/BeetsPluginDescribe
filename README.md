@@ -1,15 +1,14 @@
+[![Test & Release & Deploy](https://github.com/adamjakab/BeetsPluginDescribe/actions/workflows/test_release_deploy.yml/badge.svg)](https://github.com/adamjakab/BeetsPluginDescribe/actions/workflows/test_release_deploy.yml)
 [![Coverage Status](https://coveralls.io/repos/github/adamjakab/BeetsPluginDescribe/badge.svg?branch=master)](https://coveralls.io/github/adamjakab/BeetsPluginDescribe?branch=master)
 [![PyPi](https://img.shields.io/pypi/v/beets-describe.svg)](https://pypi.org/project/beets-describe/)
 [![PyPI pyversions](https://img.shields.io/pypi/pyversions/beets-describe.svg)](https://pypi.org/project/beets-describe/)
 [![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE.txt)
 
-
 # Describe (Beets Plugin)
 
-The *beets-describe* plugin attempts to give you the full picture on a single attribute of your library item.
+The _beets-describe_ plugin attempts to give you the full picture on a single attribute of your library item.
 
 **NOTE: Under heavy development but works!**
-
 
 ## Installation:
 
@@ -18,9 +17,10 @@ $ pip install beets-describe
 ```
 
 and activate the plugin the usual way
+
 ```yaml
 plugins:
-    - describe
+  - describe
 ```
 
 ## Usage:
@@ -77,7 +77,6 @@ Distribution(bins=10) histogram
 161.2 - 173.1  [107]  ████████████████▊
 173.1 - 185.0  [ 24]  ███▊
 ```
-
 
 `beet describe genre`
 
@@ -167,19 +166,19 @@ Speed Metal             [  1]  ▎
 Gypsy Jazz              [  1]  ▎
 ```
 
-
 ## Configuration
+
 There are no configuration options for this plugin.
 
-
 ## Issues
+
 - If something is not working as expected please use the Issue tracker.
 - If the documentation is not clear please use the Issue tracker.
 - If you have a feature request please use the Issue tracker.
 - In any other situation please use the Issue tracker.
 
-
 ## Other plugins by the same author
+
 - [beets-goingrunning](https://github.com/adamjakab/BeetsPluginGoingRunning)
 - [beets-xtractor](https://github.com/adamjakab/BeetsPluginXtractor)
 - [beets-yearfixer](https://github.com/adamjakab/BeetsPluginYearFixer)
@@ -188,6 +187,6 @@ There are no configuration options for this plugin.
 - [beets-bpmanalyser](https://github.com/adamjakab/BeetsPluginBpmAnalyser)
 - [beets-template](https://github.com/adamjakab/BeetsPluginTemplate)
 
-
 ## Final Remarks
+
 Enjoy!
